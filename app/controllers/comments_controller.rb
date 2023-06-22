@@ -5,14 +5,11 @@ class CommentsController < ApplicationController
         redirect_to article_path(@article)
     end
     def destroy
+        
         @article = Article.find(params[:article_id])
-        if @article.nil?
-            puts "This article is not existing"
-        # else
-        #     Comment.find(params[:id]).destroy
-        #     # @comment.destroy
-        #     redirect_to article_path(@article)
-        end
+        @comment = Comment.find(params[:id])
+        @comment.destroy
+        redirect_to article_path(@article)
     end
 
     private
